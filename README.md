@@ -4,6 +4,7 @@ Simple 2D platformer project for MSCH-C220 class at Indiana University. 03/27/20
 
 ## Implementation
 Built using Godot 3.2.3
+
 Features: 
 1. user-controlled player that can jump
 2. visible coin score
