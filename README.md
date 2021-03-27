@@ -1,20 +1,26 @@
-# 2D-Platformer-Character
+# 2D-Platformer
+Simple 2D platformer project for MSCH-C220 class at Indiana University. 03/27/2021.
 
-A somewhat-generic character (including animations and state machine) appropriate for a 2D platformer built in Godot. Includes test level.
 
 ## Implementation
 Built using Godot 3.2.3
-
-The player sprite is adaptated from [MV Platformer Male](https://opengameart.org/content/mv-platformer-male-32x64) by MoikMellah. CC0 Licensed.
+Features: 
+1. user-controlled player that can jump
+2. visible coin score
+3. saving/loading system for level 1 coin score
+4. sound upon coin collection
+5. two levels 
+6. 2 enemies on the second level with different movement patterns
+7. camera follows character on both levels
+8. background music on level 2
+9. particle trail around second type of enemy
+10. end screen 
 
 ## References
 None
 
 ## Future Development
-None
-
-## Extra Credit
-None
+absolutely not
 
 ## Created by 
-Jason Francis
+Ren Gardner
