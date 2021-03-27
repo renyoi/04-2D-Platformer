@@ -1,0 +1,236 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://UI/Menu.gd" type="Script" id=1]
+[ext_resource path="res://Level2/Portal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://StateMachine/Player_Container.gd" type="Script" id=4]
+[ext_resource path="res://Camera.gd" type="Script" id=5]
+[ext_resource path="res://Assets/ARCADECLASSIC.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://Coin/Alien.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Coin/Alien2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Suspense Epic Background Music - 'Frantic Run'.ogg" type="AudioStream" id=10]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="TileSet" id=4]
+0/name = "icon.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/occluder = SubResource( 2 )
+0/navigation_offset = Vector2( 0, 0 )
+0/navigation = SubResource( 1 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 3 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends Control
+"
+
+[sub_resource type="DynamicFont" id=5]
+size = 60
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 6 )
+
+[node name="Game" type="Node2D"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2( 100, 100 )
+stream = ExtResource( 10 )
+autoplay = true
+max_distance = 9000.0
+
+[node name="Player_Container" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 4 )
+collision_layer = 2
+collision_mask = 3
+format = 1
+tile_data = PoolIntArray( -720896, 0, 0, -720895, 0, 0, -720894, 0, 0, -720893, 0, 0, -720892, 0, 0, -720891, 0, 0, -720890, 0, 0, -720889, 0, 0, -720888, 0, 0, -720887, 0, 0, -720886, 0, 0, -720885, 0, 0, -720884, 0, 0, -720883, 0, 0, -720882, 0, 0, -720881, 0, 0, -720880, 0, 0, -720879, 0, 0, -720878, 0, 0, -720877, 0, 0, -720876, 0, 0, -720875, 0, 0, -720874, 0, 0, -720873, 0, 0, -720872, 0, 0, -720871, 0, 0, -720870, 0, 0, -720869, 0, 0, -720868, 0, 0, -720867, 0, 0, -720866, 0, 0, -720865, 0, 0, -720864, 0, 0, -720863, 0, 0, -720862, 0, 0, -720861, 0, 0, -720860, 0, 0, -720859, 0, 0, -720858, 0, 0, -720857, 0, 0, -720856, 0, 0, -720855, 0, 0, -720854, 0, 0, -720853, 0, 0, -720852, 0, 0, -720851, 0, 0, -720850, 0, 0, -720849, 0, 0, -720848, 0, 0, -720847, 0, 0, -720846, 0, 0, -720845, 0, 0, -720844, 0, 0, -720843, 0, 0, -720842, 0, 0, -720841, 0, 0, -720840, 0, 0, -720839, 0, 0, -720838, 0, 0, -655360, 0, 0, -655302, 0, 0, -589824, 0, 0, -589766, 0, 0, -524288, 0, 0, -524230, 0, 0, -458752, 0, 0, -458694, 0, 0, -393216, 0, 0, -393158, 0, 0, -327680, 0, 0, -327622, 0, 0, -262144, 0, 0, -262086, 0, 0, -196608, 0, 0, -196550, 0, 0, -131072, 0, 0, -131014, 0, 0, -65536, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65512, 0, 0, -65511, 0, 0, -65510, 0, 0, -65478, 0, 0, 0, 0, 0, 58, 0, 0, 65536, 0, 0, 65545, 0, 0, 65594, 0, 0, 131072, 0, 0, 131081, 0, 0, 131088, 0, 0, 131094, 0, 0, 131100, 0, 0, 131103, 0, 0, 131106, 0, 0, 131124, 0, 0, 131130, 0, 0, 196608, 0, 0, 196620, 0, 0, 196621, 0, 0, 196627, 0, 0, 196660, 0, 0, 196666, 0, 0, 262144, 0, 0, 262156, 0, 0, 262157, 0, 0, 262196, 0, 0, 262202, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327707, 0, 0, 327716, 0, 0, 327717, 0, 0, 327732, 0, 0, 327738, 0, 0, 393216, 0, 0, 393235, 0, 0, 393236, 0, 0, 393260, 0, 0, 393268, 0, 0, 393274, 0, 0, 458752, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458795, 0, 0, 458796, 0, 0, 458797, 0, 0, 458804, 0, 0, 458810, 0, 0, 524288, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524317, 0, 0, 524318, 0, 0, 524330, 0, 0, 524331, 0, 0, 524332, 0, 0, 524333, 0, 0, 524334, 0, 0, 524346, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 0, 589859, 0, 0, 589860, 0, 0, 589861, 0, 0, 589862, 0, 0, 589863, 0, 0, 589864, 0, 0, 589865, 0, 0, 589866, 0, 0, 589867, 0, 0, 589868, 0, 0, 589869, 0, 0, 589870, 0, 0, 589871, 0, 0, 589872, 0, 0, 589873, 0, 0, 589874, 0, 0, 589875, 0, 0, 589876, 0, 0, 589877, 0, 0, 589878, 0, 0, 589879, 0, 0, 589880, 0, 0, 589881, 0, 0, 589882, 0, 0 )
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_bottom = 630
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.1
+script = ExtResource( 5 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI/HUD"]
+margin_right = 1023.0
+margin_bottom = 46.0
+color = Color( 0, 0, 0, 0.607843 )
+
+[node name="Run" type="Label" parent="UI/HUD"]
+margin_left = 70.1076
+margin_top = -5.47716
+margin_right = 169.108
+margin_bottom = 55.5228
+custom_fonts/font = SubResource( 5 )
+text = "RUN."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Load" type="Button" parent="UI/Menu"]
+margin_left = 357.229
+margin_top = 12.037
+margin_right = 455.229
+margin_bottom = 37.037
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.0941176, 0.380392, 0.866667, 1 )
+text = "Load"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="UI/Menu"]
+margin_left = 232.82
+margin_top = 12.037
+margin_right = 330.82
+margin_bottom = 37.037
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.909804, 0.0901961, 0.0901961, 1 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portal" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3575.77, 363.451 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Alien" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 267.418, 298.631 )
+
+[node name="Coin" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 490.657, 540.173 )
+
+[node name="Coin2" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 816.28, 27.814 )
+
+[node name="Coin3" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 1166.98, 82.2327 )
+
+[node name="Coin4" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 960.187, 547.815 )
+
+[node name="Coin5" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 729.21, 192.279 )
+
+[node name="Coin6" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 1323.57, 350.717 )
+
+[node name="Coin7" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 1674.51, 62.2681 )
+
+[node name="Coin8" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 1423.35, -105.209 )
+
+[node name="Coin9" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 2376.15, 103.713 )
+
+[node name="Coin10" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 1776.66, 546.905 )
+
+[node name="Coin11" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 2577.23, 558.548 )
+
+[node name="Coin12" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 2177.46, 533.074 )
+
+[node name="Coin13" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 3130.9, 524.178 )
+
+[node name="Coin14" parent="Node2D" instance=ExtResource( 8 )]
+position = Vector2( 3475.91, 375.687 )
+
+[node name="Coin15" parent="Node2D" instance=ExtResource( 9 )]
+position = Vector2( 314.328, 246.511 )
+
+[node name="Coin16" parent="Node2D" instance=ExtResource( 9 )]
+position = Vector2( 723.385, 507.015 )
+
+[node name="Coin17" parent="Node2D" instance=ExtResource( 9 )]
+position = Vector2( 1163.66, 298.181 )
+
+[node name="Coin18" parent="Node2D" instance=ExtResource( 9 )]
+position = Vector2( 2150.78, 322.94 )
+
+[node name="Coin19" parent="Node2D" instance=ExtResource( 9 )]
+position = Vector2( 2837.56, 272.346 )
+
+[node name="Coin20" parent="Node2D" instance=ExtResource( 9 )]
+position = Vector2( 3580.32, 505.939 )
+[connection signal="pressed" from="UI/Menu/Load" to="UI/Menu" method="_on_Load_pressed"]
+[connection signal="pressed" from="UI/Menu/Quit" to="UI/Menu" method="_on_Quit_pressed"]
